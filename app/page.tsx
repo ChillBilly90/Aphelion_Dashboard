@@ -4,18 +4,18 @@ import { useMemo, useState } from "react";
 import PanelFrame from "./components/PanelFrame";
 import PanelSection from "./components/PanelSection";
 
-const GRAFANA_BASE = "http://10.88.88.196:30173";
+const GRAFANA_BASE = process.env.NEXT_PUBLIC_GRAFANA_BASE ?? "";
 const DASHBOARD_UID = "7d57716318ee0dddbac5a7f451fb7753";
 const DASHBOARD_SLUG = "node-exporter-nodes";
 
 const NODES = [
-  { label: "Pi 1", ip: "10.88.88.191" },
-  { label: "Pi 2", ip: "10.88.88.192" },
-  { label: "Pi 3", ip: "10.88.88.193" },
-  { label: "Pi 4", ip: "10.88.88.194" },
-  { label: "Pi 5", ip: "10.88.88.195" },
-  { label: "Pi 6", ip: "10.88.88.196" },
-];
+  { label: "Pi 1", ip: process.env.NEXT_PUBLIC_NODE_1_IP ?? "" },
+  { label: "Pi 2", ip: process.env.NEXT_PUBLIC_NODE_2_IP ?? "" },
+  { label: "Pi 3", ip: process.env.NEXT_PUBLIC_NODE_3_IP ?? "" },
+  { label: "Pi 4", ip: process.env.NEXT_PUBLIC_NODE_4_IP ?? "" },
+  { label: "Pi 5", ip: process.env.NEXT_PUBLIC_NODE_5_IP ?? "" },
+  { label: "Pi 6", ip: process.env.NEXT_PUBLIC_NODE_6_IP ?? "" },
+].filter((node) => node.ip);
 
 function buildPanelUrl(panelId: string, nodeIp: string) {
   const instance = `${nodeIp}:9100`;
@@ -26,7 +26,7 @@ function buildPanelUrl(panelId: string, nodeIp: string) {
 }
 
 export default function Home() {
-  const [selectedNodeIp, setSelectedNodeIp] = useState(NODES[0].ip);
+  const [selectedNodeIp, setSelectedNodeIp] = useState(NODES[0]?.ip ?? "");
 
   const selectedNode =
     NODES.find((node) => node.ip === selectedNodeIp) ?? NODES[0];
@@ -82,6 +82,14 @@ export default function Home() {
     ],
     [selectedNodeIp]
   );
+
+  if (!selectedNode) {
+    return (
+      <main className="min-h-screen bg-slate-950 p-6 text-white">
+        <p>No nodes configured.</p>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-slate-950 p-6 text-white">
