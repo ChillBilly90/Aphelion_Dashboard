@@ -31,7 +31,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           tags: chillbilly90/recurse-dashboard:latest
           build-args: |
             NEXT_PUBLIC_NODE_1_IP=${{ secrets.NEXT_PUBLIC_NODE_1_IP }}
