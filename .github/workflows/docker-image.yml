@@ -33,3 +33,19 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: chillbilly90/recurse-dashboard:latest
+          build-args: |
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: chillbilly90/recurse-dashboard:latest
+          build-args: |
+            NEXT_PUBLIC_NODE_1_IP=${{ secrets.NEXT_PUBLIC_NODE_1_IP }}
+            NEXT_PUBLIC_NODE_2_IP=${{ secrets.NEXT_PUBLIC_NODE_2_IP }}
+            NEXT_PUBLIC_NODE_3_IP=${{ secrets.NEXT_PUBLIC_NODE_3_IP }}
+            NEXT_PUBLIC_NODE_4_IP=${{ secrets.NEXT_PUBLIC_NODE_4_IP }}
+            NEXT_PUBLIC_NODE_5_IP=${{ secrets.NEXT_PUBLIC_NODE_5_IP }}
+            NEXT_PUBLIC_NODE_6_IP=${{ secrets.NEXT_PUBLIC_NODE_6_IP }}
