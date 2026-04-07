@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recurse-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recurse-dashboard
+  template:
+    metadata:
+      labels:
+        app: recurse-dashboard
+    spec:
+      containers:
+        - name: recurse-dashboard
+          image: chillbilly90/recurse-dashboard:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000

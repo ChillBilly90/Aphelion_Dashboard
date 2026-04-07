@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: recurse-dashboard
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: recurse.lab
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: recurse-dashboard
+                port:
+                  number: 80
