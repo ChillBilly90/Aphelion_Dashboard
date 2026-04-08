@@ -35,11 +35,11 @@ export default function Home() {
     () => [
       {
         title: "CPU Usage",
-        src: buildPanelUrl("panel-2", selectedNodeIp),
+        src: buildPanelUrl("2", selectedNodeIp),
       },
       {
         title: "Load Average",
-        src: buildPanelUrl("panel-3", selectedNodeIp),
+        src: buildPanelUrl("3", selectedNodeIp),
       },
     ],
     [selectedNodeIp]
@@ -49,7 +49,7 @@ export default function Home() {
     () => [
       {
         title: "Memory Usage",
-        src: buildPanelUrl("panel-5", selectedNodeIp),
+        src: buildPanelUrl("5", selectedNodeIp),
       },
     ],
     [selectedNodeIp]
@@ -59,11 +59,11 @@ export default function Home() {
     () => [
       {
         title: "Disk I/O",
-        src: buildPanelUrl("panel-8", selectedNodeIp),
+        src: buildPanelUrl("8", selectedNodeIp),
       },
       {
         title: "Disk Space Usage",
-        src: buildPanelUrl("panel-9", selectedNodeIp),
+        src: buildPanelUrl("9", selectedNodeIp),
       },
     ],
     [selectedNodeIp]
@@ -73,11 +73,11 @@ export default function Home() {
     () => [
       {
         title: "Traffic Received",
-        src: buildPanelUrl("panel-11", selectedNodeIp),
+        src: buildPanelUrl("11", selectedNodeIp),
       },
       {
         title: "Traffic Sent",
-        src: buildPanelUrl("panel-12", selectedNodeIp),
+        src: buildPanelUrl("12", selectedNodeIp),
       },
     ],
     [selectedNodeIp]
